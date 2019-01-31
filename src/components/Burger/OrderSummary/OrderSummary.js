@@ -1,5 +1,6 @@
 import React from 'react';
-import AuxComp from '../../hoc/AuxComp';
+import AuxComp from '../../../hoc/AuxComp';
+import Button from '../../UI/Button/Button';
 
 const orderSummary = (props) => {
     console.log(props.ingredients)
@@ -22,9 +23,10 @@ const orderSummary = (props) => {
             <ul>
                 {ingredientSummary}
             </ul>
+            <p><strong>Total Price: ${props.price.toFixed(2)}</strong></p>
             <p>Continue to Checkout?</p>
-            <button>Cancel</button>
-            <button>Continue</button>
+            <Button btnType="Danger" clicked={props.purchaseCanceled}>Cancel</Button>
+            <Button btnType="Success" clicked={props.purchaseContinue}>Continue</Button>
         </AuxComp>
     )
 };
