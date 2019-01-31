@@ -3,7 +3,7 @@ import AuxComp from '../../hoc/AuxComp';
 import Burger from '../../components/Burger/Burger';
 import BuildControls from '../../components/Burger/BuildControls/BuildControls';
 import Modal from '../../components/UI/Modal/Modal';
-import OrderSummary from '../../components/OrderSummary/OrderSummary';
+import OrderSummary from '../../components/Burger/OrderSummary/OrderSummary';
 
 const INGREDIENT_PRICES = {
     salad: 0.3,
@@ -78,6 +78,10 @@ class BurgerBuilder extends Component {
         this.setState({purchasing: false})
     }
 
+    purchaseContinueHandler = () => {
+        alert("You continue!");
+    }
+
     render(){
         const disabled = {...this.state.ingredients}
         for(let key in disabled){
@@ -87,7 +91,11 @@ class BurgerBuilder extends Component {
         return (
             <AuxComp>
                 <Modal show={this.state.purchasing} modalClosed={this.purchaseCancelHandler}>
-                    <OrderSummary ingredients={this.state.ingredients}/>
+                    <OrderSummary 
+                        ingredients={this.state.ingredients}
+                        purchaseCanceled={this.purchaseCancelHandler}
+                        purchaseContinue={this.purchaseContinueHandler}
+                        price={this.state.totalPrice}/>
                 </Modal>
                 <Burger ingredients={this.state.ingredients}/>
                 <BuildControls
