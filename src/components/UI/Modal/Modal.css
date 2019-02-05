@@ -6,8 +6,8 @@
     border: 1px solid #ccc;
     box-shadow: 1px 1px black;
     padding: 16px;
-    left: 30%;
-    top: 30%;
+    left: 15%;
+    top: 25%;
     box-sizing: border-box;
     transition: all 0.3s ease-out;
 }
